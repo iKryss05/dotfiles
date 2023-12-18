@@ -3,9 +3,7 @@ export EDITOR="vim"
 PROMPT='%B%F{008} Debian %B%F{007}%~%B%F{006} >>%b%F{015} '
 RPROMPT='%B%F{006}$(parse_git_branch)%F{003}$(parse_git_dirty) %B%F{015}%t'
 precmd() { print "" }
-autoload -Uz compinit
 setopt PROMPT_SUBST
-compinit
 zstyle ':completion:*' menu select
 source $HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -32,13 +30,17 @@ parse_git_branch() {
 	# Short form
 	# git rev-parse --abbrev-ref HEAD 2> /dev/null | sed -e 's/.*\/\(.*\)/\1/'
 }
-# XDG paths
+###----------------- XDG paths ------------------------###
+##							##
+##							##
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 
-# initialize autocompletion
-autoload -U compinit
+###--------------- initialize autocompletion ----------###
+##							##
+##							##
+autoload -Uz compinit
 compinit
 
 # history setup
